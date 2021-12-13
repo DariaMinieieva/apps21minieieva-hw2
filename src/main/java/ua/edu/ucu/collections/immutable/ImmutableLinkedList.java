@@ -12,12 +12,12 @@ public final class ImmutableLinkedList implements ImmutableList {
         head = previous;
 
         for (int i = 1; i < elements.length-1; i++) {
-            final Node newNode = new Node();
-            newNode.setValue(elements[i]);
-            newNode.setPrevious(previous);
-            previous.setNext(newNode);
+            final Node NODE = new Node();
+            NODE.setValue(elements[i]);
+            NODE.setPrevious(previous);
+            previous.setNext(NODE);
 
-            previous = newNode;
+            previous = NODE;
 
         }
         tail = new Node();
