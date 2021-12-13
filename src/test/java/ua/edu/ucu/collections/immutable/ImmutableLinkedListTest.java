@@ -59,8 +59,10 @@ public class ImmutableLinkedListTest extends TestCase {
         Object[] test = {1,2,3,"AshaD"};
         ImmutableLinkedList listik = new ImmutableLinkedList(test);
         Object to_get = listik.get(1);
+        Object to_get_2 = listik.get(5);
 
         assertEquals(to_get, 2);
+        assertEquals(to_get_2, null);
     }
 
     public void testRemove() {
