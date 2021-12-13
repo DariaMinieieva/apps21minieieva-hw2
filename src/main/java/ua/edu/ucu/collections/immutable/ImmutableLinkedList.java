@@ -1,9 +1,9 @@
 package ua.edu.ucu.collections.immutable;
 
 public final class ImmutableLinkedList implements ImmutableList {
-    Node head;
-    Node tail;
-    int length;
+    private Node head;
+    private Node tail;
+    private int length;
 
     public ImmutableLinkedList(Object[] elements) {
         Node previous = new Node();
@@ -12,12 +12,12 @@ public final class ImmutableLinkedList implements ImmutableList {
         head = previous;
 
         for (int i = 1; i < elements.length-1; i++) {
-            final Node node = new Node();
-            node.setValue(elements[i]);
-            node.setPrevious(previous);
-            previous.setNext(node);
+            final Node newNode = new Node();
+            newNode.setValue(elements[i]);
+            newNode.setPrevious(previous);
+            previous.setNext(newNode);
 
-            previous = node;
+            previous = newNode;
 
         }
         tail = new Node();
@@ -174,11 +174,7 @@ public final class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public boolean isEmpty() {
-        if (length == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return (this.length == 0);
     }
 
     @Override

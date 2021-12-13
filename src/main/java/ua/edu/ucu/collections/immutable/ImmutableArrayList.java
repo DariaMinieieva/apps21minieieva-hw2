@@ -51,7 +51,8 @@ public final class ImmutableArrayList implements ImmutableList {
         }
 
         int counter = 0;
-        for (int i = this.elements.length; i < this.elements.length+c.length; i++) {
+        for (int i = this.elements.length;
+             i < this.elements.length+c.length; i++) {
             newElements[i] = c[counter++];
         }
 
@@ -138,11 +139,7 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public boolean isEmpty() {
-        if (this.elements.length == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return (this.elements.length == 0);
     }
 
     @Override
