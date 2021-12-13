@@ -91,8 +91,10 @@ public class ImmutableArrayListTest extends TestCase {
 
         ImmutableArrayList listik = new ImmutableArrayList(test);
         int indx = listik.indexOf(to_index);
+        int indx_2 = listik.indexOf(5);
 
         assertEquals(indx, 3);
+        assertEquals(indx_2, -1);
     }
 
     public void testSize() {
@@ -124,4 +126,10 @@ public class ImmutableArrayListTest extends TestCase {
         assertEquals(check.isEmpty(), true);
     }
 
+    public void  testToArray() {
+        Object[] test = {1,2,3,"AshaD"};
+        ImmutableArrayList listik = new ImmutableArrayList(test);
+
+        assertArrayEquals(test, listik.toArray());
+    }
 }

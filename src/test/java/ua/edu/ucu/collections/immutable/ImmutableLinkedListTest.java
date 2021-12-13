@@ -92,8 +92,10 @@ public class ImmutableLinkedListTest extends TestCase {
 
         ImmutableLinkedList listik = new ImmutableLinkedList(test);
         int indx = listik.indexOf(to_index);
+        int indx_2 = listik.indexOf(5);
 
         assertEquals(indx, 3);
+        assertEquals(indx_2, -1);
     }
 
     public void testSize() {
@@ -186,5 +188,12 @@ public class ImmutableLinkedListTest extends TestCase {
         ImmutableList new_l = listik.removeLast();
 
         assertArrayEquals(check, new_l.toArray());
+    }
+
+    public void  testToArray() {
+        Object[] test = {1,2,3,"AshaD"};
+        ImmutableLinkedList listik = new ImmutableLinkedList(test);
+
+        assertArrayEquals(test, listik.toArray());
     }
 }
