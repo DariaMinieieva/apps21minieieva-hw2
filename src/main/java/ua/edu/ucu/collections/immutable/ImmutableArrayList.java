@@ -1,10 +1,8 @@
 package ua.edu.ucu.collections.immutable;
 
-import java.util.Arrays;
-import java.util.Objects;
 
 public final class ImmutableArrayList implements ImmutableList {
-    Object[] elements;
+    private Object[] elements;
 
     public ImmutableArrayList(Object[] elements) {
         this.elements = new Object[elements.length];
@@ -19,67 +17,68 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableList add(Object e) {
-        Object[] new_elements = new Object[this.elements.length+1];
+        Object[] newElements = new Object[this.elements.length+1];
 
         for (int i = 0; i < this.elements.length; i++) {
-            new_elements[i] = elements[i];
+            newElements[i] = elements[i];
         }
 
-        new_elements[this.elements.length] = e;
-        return new ImmutableLinkedList(new_elements);
+        newElements[this.elements.length] = e;
+        return new ImmutableLinkedList(newElements);
     }
 
     @Override
     public ImmutableList add(int index, Object e) {
-        Object[] new_elements = new Object[this.elements.length+1];
+        Object[] newElements = new Object[this.elements.length+1];
 
         int counter = 0;
         for (int i = 0; i < this.elements.length+1; i++) {
             if (i == index) {
-                new_elements[i] = e;
+                newElements[i] = e;
             } else {
-                new_elements[i] = this.elements[counter++];
+                newElements[i] = this.elements[counter++];
             }
         }
-        return new ImmutableLinkedList(new_elements);
+        return new ImmutableLinkedList(newElements);
     }
 
     @Override
     public ImmutableList addAll(Object[] c) {
-        Object[] new_elements = new Object[this.elements.length+c.length];
+        Object[] newElements = new Object[this.elements.length+c.length];
 
         for (int i = 0; i < this.elements.length; i++) {
-            new_elements[i] = elements[i];
+            newElements[i] = elements[i];
         }
 
         int counter = 0;
         for (int i = this.elements.length; i < this.elements.length+c.length; i++) {
-            new_elements[i] = c[counter++];
+            newElements[i] = c[counter++];
         }
 
-        return new ImmutableLinkedList(new_elements);
+        return new ImmutableLinkedList(newElements);
     }
 
     @Override
     public ImmutableList addAll(int index, Object[] c) {
-        Object[] new_elements = new Object[this.elements.length+c.length];
+        Object[] newElements = new Object[this.elements.length+c.length];
 
 
         for (int i = 0; i < index; i++) {
-            new_elements[i] = this.elements[i];
+            newElements[i] = this.elements[i];
         }
 
         int counter = 0;
         for (int i = index; i < index + c.length; i++) {
-            new_elements[i] = c[counter++];
+            newElements[i] = c[counter++];
         }
 
         counter = index;
-        for (int i = index + c.length; i < this.elements.length+c.length; i++) {
-            new_elements[i] = this.elements[counter++];
+        for (int i = index + c.length; i < this.elements.length+c.length;
+             i++) {
+            newElements[i] = this.elements[counter++];
         }
 
-        return new ImmutableLinkedList(new_elements);
+        return new ImmutableLinkedList(newElements);
     }
 
     @Override
@@ -89,31 +88,31 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public ImmutableList remove(int index) {
-        Object[] new_elements = new Object[this.elements.length-1];
+        Object[] newElements = new Object[this.elements.length-1];
 
         int counter = 0;
         for (int i = 0; i < this.elements.length; i++) {
             if (i != index) {
-                new_elements[counter++] = elements[i];
+                newElements[i] = elements[counter++];
             } else {
-                i++;
+                counter++;
             }
         }
 
-        return new ImmutableLinkedList(new_elements);
+        return new ImmutableLinkedList(newElements);
     }
 
     @Override
     public ImmutableList set(int index, Object e) {
-        Object[] new_elements = new Object[this.elements.length];
+        Object[] newElements = new Object[this.elements.length];
 
         for (int i = 0; i < this.elements.length; i++) {
-            new_elements[i] = this.elements[i];
+            newElements[i] = this.elements[i];
         }
 
-        new_elements[index] = e;
+        newElements[index] = e;
 
-        return new ImmutableLinkedList(new_elements);
+        return new ImmutableLinkedList(newElements);
     }
 
     @Override
@@ -139,17 +138,21 @@ public final class ImmutableArrayList implements ImmutableList {
 
     @Override
     public boolean isEmpty() {
-        return (this.elements.length == 0) ? true : false;
+        if (this.elements.length == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public Object[] toArray() {
-        Object[] new_elements = new Object[this.elements.length];
+        Object[] newElements = new Object[this.elements.length];
 
         for (int i = 0; i < this.elements.length; i++) {
-            new_elements[i] = this.elements[i];
+            newElements[i] = this.elements[i];
         }
 
-        return new_elements;
+        return newElements;
     }
 }
