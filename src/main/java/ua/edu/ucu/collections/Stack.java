@@ -9,10 +9,6 @@ public class Stack {
         elements = new ImmutableLinkedList();
     }
 
-    public Stack(Object[] element) {
-        elements = new ImmutableLinkedList(element);
-    }
-
     public void push(Object e) {
         this.elements = this.elements.addLast(e);
     }

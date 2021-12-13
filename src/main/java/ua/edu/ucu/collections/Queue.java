@@ -10,9 +10,6 @@ public class Queue {
         elements = new ImmutableLinkedList();
     }
 
-    public Queue(Object[] element) {
-        elements = new ImmutableLinkedList(element);
-    }
 
     public Object peek() {
         return this.elements.getFirst();
